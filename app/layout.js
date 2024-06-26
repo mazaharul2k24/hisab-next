@@ -18,12 +18,10 @@ export const metadata = {
     <html lang="en">
       <body className={ChakraPetch.className}>
         <Header/>
-        <div>
+        <div >
         {children}
         <ToastContainer/>
         </div>
-     
-        
         </body>
     </html>
   );

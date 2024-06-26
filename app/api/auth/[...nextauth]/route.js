@@ -7,14 +7,10 @@ const providerOption={
     CredentialsProvider({
       name:"HISAB",
       credentials:{},
-      
-      
       async authorize(credentials, req) {
         const user = { id: "1", name: "J Smith", email: credentials.email }
         console.log(user.email)
-      
     }
-    
   })
   ],
   page:{

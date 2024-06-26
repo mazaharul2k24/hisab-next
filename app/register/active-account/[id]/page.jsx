@@ -3,10 +3,11 @@ import React from 'react'
 import { useParams } from 'next/navigation'
 import { useEffect,useState } from 'react'
 import Link from 'next/link'
-export default function page() {
+export default function ActiveAccountpage() {
+  const {id}=useParams()
   const [msg,setMsg]=useState("")
   const [error,setError]=useState("")
-  const {id}=useParams()
+
 
   useEffect(()=>{
     const ActiveAcc=async()=>{
@@ -33,7 +34,7 @@ console.log("faild to convert json")
     }
 
     ActiveAcc()
-  },[])
+  },[id])
 
   return (
     <div className='w-[40%] mx-auto border shadow-md rounded-md py-6 px-8 mt-10'>
@@ -41,7 +42,9 @@ console.log("faild to convert json")
       {error && (
         <p>{error} <Link className=' text-red-500 px-1 rounded-md' href={'/register'}>Register</Link></p>
       )}
-      {msg && (
+      {msg=="Already verified your email please login"?  (
+        <p className='flex'>{msg} <p className='text-red-500 px-2'> (Expire) </p> <Link  className=' text-blue-500 px-1 rounded-md ' href={'/login'}>Login</Link></p>
+      ):(
         <p>{msg} <Link  className=' text-blue-500 px-1 rounded-md ' href={'/login'}>Login</Link></p>
       )}
 

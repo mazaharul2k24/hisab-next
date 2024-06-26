@@ -9,25 +9,29 @@ import {
   } from "@/components/ui/table"
 import Link from "next/link"
 import { useEffect, useState } from "react"
-
+import Image from "next/image"
   export default function TableDemo() {
     const [invoices,setInvoices]=useState([])
     const [pro,setPro]=useState([])
     const [err,setErr]=useState("")
+    const [loading,setLoading]=useState(false)
     useEffect(()=>{
-
+      setLoading(true)
       const getToday=async()=>{
         const res=await fetch("api/gettoday")
         if(res.ok){
          const jsCon=await res.json()
          if(res.status==200){
+          setLoading(false)
           setInvoices(jsCon.data.reverse())
           setPro(jsCon.productPirce)
          }else if(res.status==201){
+          setLoading(false)
            setErr(jsCon.message)
          }
         }else{
-         console.log("erorr")
+          setLoading(false)
+          setErr("Connection error try again leter")
         }
       }
       getToday()
@@ -64,12 +68,17 @@ import { useEffect, useState } from "react"
 
     return (
   <>
+
+{loading && (
+<Image alt="loaing image" className="mx-auto block mt-20" src={'/loading-gif.gif'} height={40} width={40}></Image>
+)}
+
   {invoices.length>0 && (
  <div>
      <h1 className="py-4 text-2xl font-bold text-center ">Today </h1>
 <div className="w-[95%] p-2 md:w-[80%] mx-auto  shadow-md border rounded-md">
     <div className="statusBox grid grid-cols-3 gap-6 py-6 my-3 mx-auto w-fit items-center">
-      <div className="box1 bg-green-300 text-gray-700 border rounded-md p-4  w-fit text-center ">
+      <div className="box1 bg-green-300 text-gray-600 border rounded-md p-4  w-fit text-center ">
         <p>{toatalAmountPaid?toatalAmountPaid:"0000"} BDT </p>
         <b>Paid sell today</b>
       </div>

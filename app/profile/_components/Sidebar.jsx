@@ -1,33 +1,33 @@
+"use client"
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { IoAddOutline, IoHomeOutline } from 'react-icons/io5'
+import { IoAddOutline, IoHomeOutline, IoSettingsOutline } from 'react-icons/io5'
 import { AiOutlineProduct } from "react-icons/ai";
 import { LuUsers } from "react-icons/lu";
 import { TbFileInvoice } from "react-icons/tb";
-
+import { MdLogout } from "react-icons/md";
 export default function Sidebar() {
   return (
     <>
-       <div className="main w-[220px] py-3">
+       <div className="main w-[220px] py-3 tracking-wide">
         <div className="hlogo">
-          <h1>HISAb</h1>
+          <h1 className='text-center'>HISAB</h1>
         </div>
         <div className="menu mt-4 py-4">
           <ul>
 
-            
-         <Link href={'/'}>
-         <li className='flex gap-2 cursor-pointer items-center my-1 bg-gray-700 w-[90%] mx-auto py-2 rounded-md px-4 hover:text-white hover:bg-gray-700 focus:text-white'>
+         <Link href={'/profile/'}>
+         <li className='flex gap-2 cursor-pointer items-center my-1 border border-gray-700 w-[90%] mx-auto py-2 rounded-md px-4 hover:text-white hover:bg-gray-700 focus:text-white'>
               <div className="incon">
               <IoHomeOutline/>
               </div>
-              <div className="text">
+              <div className="text ">
                Dashboard
               </div>
             </li>
          </Link>
-         <Link href={'/invoices'}>
+         <Link href={'/profile/invoices'}>
          <li className='flex gap-2 cursor-pointer items-center my-1 w-[90%] mx-auto py-2 rounded-md px-4 hover:text-white hover:bg-gray-700 focus:text-white'>
               <div className="incon">
               <TbFileInvoice/>
@@ -38,7 +38,7 @@ export default function Sidebar() {
             </li>
          </Link>
 
-         <Link href={'/'}>
+         <Link href={'/profile/users'}>
          <li className='flex gap-2 cursor-pointer items-center my-1 w-[90%] mx-auto py-2 rounded-md px-4 hover:text-white hover:bg-gray-700 focus:text-white'>
               <div className="incon">
               <LuUsers />
@@ -48,8 +48,9 @@ export default function Sidebar() {
               </div>
             </li>
          </Link>
-         <Link href={'profile/abc'}>
-         <li className='flex gap-2 cursor-pointer items-center my-1  w-[90%] mx-auto py-2 rounded-md px-4 hover:text-white hover:bg-gray-700 focus:text-white'>
+
+         <Link href={'/profile/add-product'}>
+         <li className='flex gap-2 cursor-pointer items-center my-1  w-[90%] mx-auto py-2 rounded-md px-4 hover:text-white hover:bg-gray-700 focus:bg-gray-700 focus:text-white'>
               <div className="incon">
               <IoAddOutline />
               </div>
@@ -58,18 +59,27 @@ export default function Sidebar() {
               </div>
             </li>
          </Link>
-
-        
+         <Link href={'/profile/settings'}>
          <li className='flex gap-2 cursor-pointer items-center my-1  w-[90%] mx-auto py-2 rounded-md px-4 hover:text-white hover:bg-gray-700 focus:text-white'>
               <div className="incon">
-              <AiOutlineProduct />
+              <IoSettingsOutline />
               </div>
               <div className="text">
-              <a href={'/invoices'}>
-               Products
-               </a>
+               Settings
               </div>
             </li>
+         </Link>
+         <Link href={'/profile/logout'}>
+         <li className='flex gap-2 cursor-pointer items-center my-1  w-[90%] mx-auto py-2 rounded-md px-4 hover:text-white hover:bg-gray-700 focus:text-white'>
+              <div className="incon">
+              <MdLogout />
+              </div>
+              <div className="text">
+               Logout
+              </div>
+            </li>
+         </Link>
+
    
 
            
