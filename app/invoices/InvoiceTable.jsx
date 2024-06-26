@@ -24,6 +24,7 @@ export function InvoiceTable() {
     const getAllinvoice = async () => {
       const res = await fetch("/api/getinvoice", {
         method: "GET",
+        cache:"no-cache"
       });
       if (res.ok) {
         const dataArr = await res.json();
