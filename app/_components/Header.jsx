@@ -28,7 +28,7 @@ export default function Header() {
             </li>
 
             <li>
-              <Link className="text-gray-500 transition hover:text-gray-500/75" href="/today"> Today </Link>
+              <Link prefetch={false} className="text-gray-500 transition hover:text-gray-500/75" href="/today"> Today </Link>
             </li>
 
             <li>
