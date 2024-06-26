@@ -33,6 +33,7 @@ const [invoicepData,setInvoicepdata]=useState([])
   useEffect(()=>{
     fetch("/api/getinvoicedata",{
       method:"POST",
+        cache:"no-store",
       headers:{
         "Content-type":"application/json"
       },
