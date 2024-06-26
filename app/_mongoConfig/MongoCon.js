@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 export const Dbconnect = async () => {
   await mongoose
-    .connect("mongodb+srv://hisab:hisab2k24@cluster0.mtimeds.mongodb.net/HISAB")
+    .connect(process.env.mongo_url)
     .then((res) => {
       console.log("Db connected");
     })
