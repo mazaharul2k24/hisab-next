@@ -2,7 +2,7 @@ import nodemailer from "nodemailer";
 
  export const sendEmail=async(email,genActivekey)=>{
   try {
-    const activeLink="http://192.168.1.105:3000/register/active-account/"
+    const activeLink=`${process.env.active_link}/register/active-account/`
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
         service: "Gmail",
