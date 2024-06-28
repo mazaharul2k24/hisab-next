@@ -51,13 +51,14 @@ const handlePorductinp=(e,i)=>{
     if(res.ok){   
       const da=await res.json()
       if(res.status==200){
-        revalidatePath("/today")
-          revalidatePath("/invoices")
+       
         toast.success("Successfully insert data ",{
           autoClose:1000
         })
         setLoading(false)
         setBuyerdetails(bDetails)
+         revalidatePath("/today")
+          revalidatePath("/invoices")
        
       }else if(res.status==405){
         toast.warning("Please check Info",{
