@@ -19,7 +19,10 @@ import Image from "next/image"
       setLoading(true)
       const getToday=async()=>{
         const res=await fetch("api/gettoday",{
-          cache:"no-store"
+             next:{
+                revalidate:1
+            },
+            cache:"no-cache"
         })
         if(res.ok){
          const jsCon=await res.json()
