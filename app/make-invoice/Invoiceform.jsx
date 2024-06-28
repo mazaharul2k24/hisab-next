@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { revalidatePath } from 'next/cache';
 import { productList } from "@/lib/Productjson";
 import { toast } from "react-toastify";
 import Image from "next/image";
@@ -50,6 +51,8 @@ const handlePorductinp=(e,i)=>{
     if(res.ok){   
       const da=await res.json()
       if(res.status==200){
+        revalidatePath("/today")
+          revalidatePath("/invoices")
         toast.success("Successfully insert data ",{
           autoClose:1000
         })
