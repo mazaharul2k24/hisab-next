@@ -41,9 +41,12 @@ const handlePorductinp=(e,i)=>{
  event.preventDefault()
     setLoading(true)
 
-
    const res= await fetch("/api/invoice",{
       method:"POST",
+        next:{
+                revalidate:1
+            },
+            cache:"no-cache",
       headers:{
         "Content-type":"application/json"
       },body:JSON.stringify({"productdata":produtDetails,"buyer":buyerdetails})
@@ -57,8 +60,7 @@ const handlePorductinp=(e,i)=>{
         })
         setLoading(false)
         setBuyerdetails(bDetails)
-         revalidatePath("/today")
-          revalidatePath("/invoices")
+       
        
       }else if(res.status==405){
         toast.warning("Please check Info",{
