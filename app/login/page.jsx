@@ -1,7 +1,8 @@
 import React from 'react'
 
 export default function page() {
+  
   return (
-    <div>This is login page</div>
+    <div>This is Random number {Math.random()}</div>
   )
 }
