@@ -18,7 +18,11 @@ import Image from "next/image"
     useEffect(()=>{
       setLoading(true)
       const getToday=async()=>{
-        const res=await fetch("api/gettoday")
+        const res=await fetch("api/gettoday"{
+  cache:"no-cache",
+  next:{
+    revalidate:5,
+  })
         if(res.ok){
          const jsCon=await res.json()
          if(res.status==200){
