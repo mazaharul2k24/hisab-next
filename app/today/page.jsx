@@ -21,7 +21,8 @@ import Image from "next/image"
         const res=await fetch("api/gettoday"{
   cache:"no-cache",
   next:{
-    revalidate:5,
+    revalidate:5
+  }
   })
         if(res.ok){
          const jsCon=await res.json()
